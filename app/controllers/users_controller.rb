@@ -6,8 +6,9 @@ class UsersController < ApplicationController
     render json: users
   end
 
-  def all
-    users = User.all
-    render json: users
+  def all()
+    # users = User.all
+    # render json: users
+    render 'users/home'
   end
 end
