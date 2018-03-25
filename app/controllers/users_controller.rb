@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
 
   def search()
-    users = User.search(params[:search])
-    puts params[:search]
-    render json: users
+    render json: User.search(params[:search])
   end
 
   def all()
-    # users = User.all
-    # render json: users
+    render json: User.all
+  end
+
+  def root()
     render 'users/home'
   end
+
 end

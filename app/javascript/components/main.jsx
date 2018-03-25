@@ -1,14 +1,29 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
+import axios from 'axios'
 
-class SearchForm extends React.Component {
+const ListItem = (item) => (
+  <li key={item._id.$oid}>
+    {item.name}
+    {item.admin}
+    {item.created_at}
+    {item.height}
+    {item.nick_name}
+    {item.birthday}
+  </li>
+)
+
+class Searcher extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {value: '', results: []};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    let url = 'all/';
+    axios.get(url).then((res) => {
+      this.setState({results: res.data});
+    });
   }
 
   handleChange(event) {
@@ -16,9 +31,14 @@ class SearchForm extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log(this.state.value);
     event.preventDefault();
-    this.setState({results: [1,3]});
+    let url = 'search/' + this.state.value;
+    if (this.state.value == '') {
+      url = 'all/';
+    }
+    axios.get(url).then((res) => {
+      this.setState({results: res.data});
+    });
   }
 
   render() {
@@ -29,27 +49,15 @@ class SearchForm extends React.Component {
             <input type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
         </form>
-        {this.state.results}
+        { this.state.results.map(ListItem) }
       </div>
     );
   }
 }
 
-// const Hello = props => (
-//    <div>Hello {props.name}!</div>
-// )
-
-// Hello.defaultProps = {
-//     name: 'David'
-// }
-
-// Hello.propTypes = {
-//     name: PropTypes.string
-// }
-
 const Main = () => (
   <div>
-    <SearchForm/>
+    <Searcher/>
   </div>
 )
 

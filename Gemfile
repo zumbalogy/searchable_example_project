@@ -33,7 +33,7 @@ gem 'mongoid'
 
 gem 'chronic' # TODO, get rid of this, should be called when get proper searchable gem
 
-gem 'webpacker'
+gem 'webpacker', '3.3.1'
 gem 'react-rails'
 
 
