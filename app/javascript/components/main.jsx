@@ -3,36 +3,36 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 class SearchForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {value: ''};
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    }
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
 
-    handleSubmit(event) {
-        console.log(this.state.value);
-        event.preventDefault();
-        this.setState({results: [1,3]});
-    }
+  handleSubmit(event) {
+    console.log(this.state.value);
+    event.preventDefault();
+    this.setState({results: [1,3]});
+  }
 
-    render() {
-        return (
-                <div>
-                <form onSubmit={this.handleSubmit}>
-                <label>
-                <input type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
-                </form>
-                {this.state.results}
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          </label>
+        </form>
+        {this.state.results}
+      </div>
+    );
+  }
 }
 
 // const Hello = props => (
@@ -48,9 +48,9 @@ class SearchForm extends React.Component {
 // }
 
 const Main = () => (
-        <div>
-        <SearchForm/>
-        </div>
+  <div>
+    <SearchForm/>
+  </div>
 )
 
 export { Main };
