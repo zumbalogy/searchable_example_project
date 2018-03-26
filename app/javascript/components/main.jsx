@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom'
 import axios from 'axios'
 
 const ListItem = (item) => (
-  <li key={item._id.$oid}>
-    {item.name}
-    {item.admin}
-    {item.created_at}
-    {item.height}
-    {item.nick_name}
-    {item.birthday}
-  </li>
+  <tr key={item._id.$oid}>
+    <td>{item.name}</td>
+    <td>{item.nick_name}</td>
+    <td>{item.height}</td>
+    <td>{item.admin}</td>
+    <td>{item.favorite_color}</td>
+    <td>{(new Date(item.birthday)).toGMTString()}</td>
+  </tr>
 )
 
 class Searcher extends React.Component {
@@ -49,7 +49,11 @@ class Searcher extends React.Component {
             <input type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
         </form>
-        { this.state.results.map(ListItem) }
+        <table>
+          <tbody>
+            { this.state.results.map(ListItem) }
+          </tbody>
+        </table>
       </div>
     );
   }

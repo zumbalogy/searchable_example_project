@@ -11,6 +11,7 @@ class User
 
   field :name, type: :string
   field :nick_name, type: :string
+  field :favorite_color, type: :string
 
   field :admin, type: :boolean, default: false
 
@@ -24,7 +25,9 @@ class User
       admin: Boolean,
       height: [Numeric, :allow_boolean],
       birthday: Time,
-      bday: :birthday
+      bday: :birthday,
+      color: :favorite_color,
+      favorite_color: [String, :allow_boolean]
     }
 
     tokens = Lexer.lex(query)
