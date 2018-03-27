@@ -1,5 +1,11 @@
-names = %w(alice bob charlie dianna weston xander yan zack) + ["Marco M", "Jane J"]
-colors = %w(red blue green yellow cyan magenta)
+names = []
+names += %w(Alice Bob)
+# names += %w(alice bob charlie dianna weston xander yan zack)
+names += %w(Ann Anne Lee Li)
+# names += ["Marco M", "Jane J"]
+# names += ["Jane J"]
+
+colors = %w(red blue green orange violet)
 
 names.each do |name|
   User.create(name: name,
@@ -9,4 +15,12 @@ names.each do |name|
               birthday: Time.at(Time.now - (1000000000 * rand)))
 end
 
-User.create(name: 'john doe', height: 100, admin: true, birthday: Time.at(100000000000))
+User.create(name: 'John Doe')
+
+User.create(name: 'John Doe 3000',
+            admin: true,
+            birthday: Time.at(100000000000))
+
+u = User.where(name: "Ann").first
+u.height = 100
+u.save
