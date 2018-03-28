@@ -9,8 +9,8 @@ colors = %w(red blue green orange violet)
 
 names.each do |name|
   User.create(name: name,
-              height: rand(500),
-              admin: [true, false].sample,
+              score: rand(500),
+              admin: [true, false, false].sample,
               favorite_color: colors.sample,
               birthday: Time.at(Time.now - (1000000000 * rand)))
 end
@@ -22,5 +22,5 @@ User.create(name: 'John Doe 3000',
             birthday: Time.at(100000000000))
 
 u = User.where(name: "Ann").first
-u.height = 100
+u.score = 100
 u.save

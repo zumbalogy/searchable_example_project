@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   get '/all', to: 'users#all'
 
-  get '/search/:search', to: 'users#search'
+  post '/search/', to: 'users#search'
 end

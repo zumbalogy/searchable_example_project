@@ -15,19 +15,19 @@ class User
 
   field :admin, type: :boolean, default: false
 
-  field :height, type: :integer
+  field :score, type: :integer
 
   field :birthday, type: :date
 
   def self.search(query)
-    default_fields = [:name, :nick_name]
+    default_fields = [:name, :favorite_color]
     command_fields = {
       admin: Boolean,
-      height: [Numeric, :allow_boolean],
+      score: [Numeric, :allow_existence_boolean],
       birthday: Time,
-      bday: :birthday,
+      born: :birthday,
       color: :favorite_color,
-      favorite_color: [String, :allow_boolean]
+      favorite_color: [String, :allow_existence_boolean]
     }
 
     tokens = Lexer.lex(query)
